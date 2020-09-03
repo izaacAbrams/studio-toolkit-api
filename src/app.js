@@ -4,7 +4,9 @@ const morgan = require("morgan");
 const cors = require("cors");
 const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
-
+const path = require('path')
+const fs = require('fs')
+const ytdl = require('ytdl-core')
 const app = express();
 
 const morganOption = NODE_ENV === "production" ? "tiny" : "common";
@@ -16,6 +18,12 @@ app.use(cors());
 app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
+
+app.get("/url", (req, res) => {
+
+  res.send(ytdl('https://www.youtube.com/watch?v=IBDgHaTy_wU')
+  .pipe(fs.createWriteStream('C:/Users/izaac/Downloads/music.mp3')))
+}) 
 
 app.use(function errorHandler(error, req, res, next) {
   let response;
