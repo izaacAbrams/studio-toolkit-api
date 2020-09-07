@@ -13,12 +13,12 @@ const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
 app.use(helmet());
+app.use(cors());
 
-const corsOptions = {
-	origin: "https://tmconverter.com/",
-};
-
-app.use(cors(corsOptions));
+app.use(function (req, res, next) {
+	res.setHeader("Access-Control-Allow-Origin", "https://tmconverter.com/");
+	next();
+});
 app.get("/", (req, res) => {
 	res.send("Hello, world!");
 });
@@ -33,7 +33,7 @@ app.get("/download", (req, res) => {
 });
 
 app.get("/info", (req, res) => {
-	res.header("Access-Control-Allow-Origin", "https://tmconverter.com/");
+	res.setHeader("Access-Control-Allow-Origin", "https://tmconverter.com/");
 	ytdl.getBasicInfo(req.query.URL).then((info) => res.json(info));
 });
 app.use(function errorHandler(error, req, res, next) {
