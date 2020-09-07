@@ -16,7 +16,7 @@ app.use(helmet());
 app.use(cors());
 
 app.use(function (req, res, next) {
-	res.setHeader("Access-Control-Allow-Origin", "https://tmconverter.com/");
+	res.setHeader("Access-Control-Allow-Origin", "*");
 	next();
 });
 app.get("/", (req, res) => {
