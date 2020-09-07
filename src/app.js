@@ -13,8 +13,12 @@ const morganOption = NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
 app.use(helmet());
-app.use(cors());
 
+const corsOptions = {
+	origin: "https://tmconverter.com/",
+};
+
+app.use(cors(corsOptions));
 app.get("/", (req, res) => {
 	res.send("Hello, world!");
 });
