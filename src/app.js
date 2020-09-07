@@ -19,12 +19,17 @@ app.get("/", (req, res) => {
   res.send("Hello, world!");
 });
 
-app.get("/url", (req, res) => {
+app.get('/download', (req,res) => {
+  const URL = req.query.URL;
+  res.header('Content-Disposition', 'attachment; filename="music.mp3"');
+  ytdl(URL, {
+      format: 'mp3'
+      }).pipe(res);
+  });
 
-  res.send(ytdl('https://www.youtube.com/watch?v=IBDgHaTy_wU')
-  .pipe(fs.createWriteStream('C:/Users/izaac/Downloads/music.mp3')))
-}) 
-
+app.get('/info', (req, res) => {
+  ytdl.getBasicInfo(req.query.URL).then(info => res.json(info))
+})
 app.use(function errorHandler(error, req, res, next) {
   let response;
   if (NODE_ENV === "production") {
