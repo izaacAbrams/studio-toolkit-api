@@ -33,6 +33,7 @@ app.get("/download", (req, res) => {
 });
 
 app.get("/info", (req, res) => {
+	res.header("Access-Control-Allow-Origin", "https://tmconverter.com/");
 	ytdl.getBasicInfo(req.query.URL).then((info) => res.json(info));
 });
 app.use(function errorHandler(error, req, res, next) {
