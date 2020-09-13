@@ -15,10 +15,6 @@ app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
 
-// app.use(function (req, res, next) {
-// 	res.setHeader("Access-Control-Allow-Origin", "*");
-// 	next();
-// });
 app.get("/", (req, res) => {
 	res.send("Hello, world!");
 });
@@ -32,8 +28,8 @@ app.get("/download", (req, res) => {
 	}).pipe(res);
 });
 
-app.get("/info", (req, res) => {
-	ytdl.getBasicInfo(req.query.URL).then((info) => res.json(info));
+app.get("/info", (req, res, next) => {
+	ytdl.getBasicInfo(req.query.URL).then((info) => res.json(info).catch(next));
 });
 app.use(function errorHandler(error, req, res, next) {
 	let response;
