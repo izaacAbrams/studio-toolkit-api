@@ -18,9 +18,13 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "ffmpeg": "0.0.4",
     "ffmpeg-static": "^4.2.7",
     "helmet": "^3.21.3",
     "morgan": "^1.9.1",
+    "multer": "^1.4.2",
+    "music-tempo": "^1.0.3",
+    "web-audio-api": "^0.2.2",
     "ytdl-core": "^3.2.2",
     "ytsr": "^1.0.1"
   },
