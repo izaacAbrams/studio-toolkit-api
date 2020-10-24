@@ -26,7 +26,7 @@
     "music-tempo": "^1.0.3",
     "web-audio-api": "^0.2.2",
     "ytdl-core": "^3.2.2",
-    "ytsr": "^1.0.1"
+    "ytsr": "github:TimeForANinja/node-ytsr#wip-api-adjustments"
   },
   "devDependencies": {
     "chai": "^4.2.0",
