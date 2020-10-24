@@ -115,7 +115,6 @@ app.get("/info", (req, res, next) => {
 			.catch(next);
 	}
 	if (req.query.search) {
-		console.log(req.query.search);
 		ytsr(req.query.search, { limit: 20 })
 			.then((info) => res.json(info))
 			.catch(next);
